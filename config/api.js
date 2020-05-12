@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 const sgMail = require('@sendgrid/mail');
-let mysqlConnection= require('./config')
+let mysqlConnection= require('./db')
 //-----------------------------------------------------------------------
 
 //-------------------------(middelware)------------------------------------
