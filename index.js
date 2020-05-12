@@ -3,7 +3,7 @@ let express = require('express')
 let bodyParser = require('body-parser')
 let livereload = require('livereload')
 let connectLivereload = require('connect-livereload')
-let mysqlConnection= require('./config/config')
+let mysqlConnection= require('./config/db')
 const port = process.env.PORT || 8080;
 //--------------------------------------------
 
