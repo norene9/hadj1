@@ -1,5 +1,5 @@
 let express=require('express');
-var mysqlConnection=require('./config/config');
+var mysqlConnection=require('./config/db');
 var  flash= require('connect-flash');
 const bodyparser=require('body-parser')
 const session = require('express-session');
