@@ -4,6 +4,7 @@ let bodyParser = require('body-parser')
 let livereload = require('livereload')
 let connectLivereload = require('connect-livereload')
 let mysqlConnection= require('./config/config')
+const port = process.env.PORT || 8080;
 //--------------------------------------------
 
 let app = express()
@@ -135,6 +136,6 @@ app.post('/', (request, response) => {
 //----------------------------------------------------------------------
 
 //Listing to the server
-app.listen(8080, ()=>{
+app.listen(port, ()=>{
   console.log('Server is running on port 8080...');
 })
