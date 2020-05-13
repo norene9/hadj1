@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/1ed8f1eb-14ac-41dc-81c5-f76341fdb0f7/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/hadjO",
+    "appService.deploySubpath": ""
+}
