@@ -1,12 +1,9 @@
 let mysql = require('mysql');
 var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'hadjapp',
-    password : '',
-    database:'post',
-    
-    insecureAuth : true
-  }); 
+    host: "hadjo.mysql.database.azure.com", 
+    user: "nour@hadjo", password: 'hadj@omra1', 
+    database: 'hadj', 
+  })
   
   connection.connect(function(err) {
     if (err) {
