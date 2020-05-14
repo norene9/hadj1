@@ -142,6 +142,9 @@ app.post('/', (request, response) => {
     response.redirect('/')
   }
 })
+app.get('/ApplicationNameOnIIS/', function(req, res) {
+    res.sendfile(__dirname + 'Home page/index');    
+});
 //----------------------------------------------------------------------
 
 //Listing to the server
