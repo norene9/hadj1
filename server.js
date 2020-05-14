@@ -151,6 +151,11 @@ app.post('/', (request, response) => {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('I am listening on ' + process.env.PORT);
 }).listen(process.env.PORT); */
-app.listen(port, ()=>{
+const server = http.createServer((request, response) => {
+    response.writeHead(200, {"Content-Type": "text/plain"});
+   
+});
+server.listen(port);
+/*app.listen(port, ()=>{
   console.log('Server is running on port 8080...');
-})
+})*/
