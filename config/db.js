@@ -3,6 +3,7 @@ var connection = mysql.createConnection({
     host: "hadjo.mysql.database.azure.com", 
     user: "nour@hadjo", password: 'hadj@omra1', 
     database: 'hadj', 
+    ssl:true,
   })
   
   connection.connect(function(err) {
