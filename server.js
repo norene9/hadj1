@@ -10,7 +10,7 @@ var http = require('http');
 //--------------------------------------------
 
 let app = express()
-
+app.use(session({ store: AzureTablesStoreFactory.create(options), secret: 'keyboard cat'}))
 
 app.use(express.static(__dirname + "/ApplicationNameOnIIS/"));
 
