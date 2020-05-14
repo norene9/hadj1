@@ -7,6 +7,16 @@ let mysqlConnection= require('./config/db')
 const port = process.env.PORT || 8080;
 var http = require('http');
 let app=express();
+var session = require('express-session')
+var MemoryStore = require('memorystore')(session)
+ 
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+       secret: 'keyboard cat'
+}))
 //------------------------------------------
 
 app.use(express.static(__dirname + "/ApplicationNameOnIIS/"));
