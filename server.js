@@ -7,10 +7,8 @@ let mysqlConnection= require('./config/db')
 const port = process.env.PORT || 8080;
 //--------------------------------------------
 
-//let app = express()
-var app = express(function(req, res){
-    username = req.headers['x-iisnode-auth_user'];
-});
+let app = express()
+
 
 app.use(express.static(__dirname + "/ApplicationNameOnIIS/"));
 
@@ -142,9 +140,7 @@ app.post('/', (request, response) => {
     response.redirect('/')
   }
 })
-app.get('/ApplicationNameOnIIS/', function(req, res) {
-    res.sendfile(__dirname + 'Home page/index');    
-});
+
 //----------------------------------------------------------------------
 
 //Listing to the server
