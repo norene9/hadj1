@@ -7,7 +7,16 @@ let mysqlConnection= require('./config/db')
 const port = process.env.PORT || 8080;
 //--------------------------------------------
 
-let app = express()
+//let app = express()
+var app = express(function(req, res){
+    username = req.headers['x-iisnode-auth_user'];
+});
+
+app.use(express.static(__dirname + "/ApplicationNameOnIIS/"));
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
 var liveReloadServer = livereload.createServer()
 liveReloadServer.watch([__dirname +'./assets',__dirname +'./views/Home page'])
 
