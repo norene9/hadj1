@@ -147,10 +147,10 @@ app.post('/', (request, response) => {
 
 //Listing to the server
 
-http.createServer(function (req, res) {
+/*http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('I am listening on ' + process.env.PORT);
-}).listen(process.env.PORT); 
-/*app.listen(port, ()=>{
+}).listen(process.env.PORT); */
+app.listen(port, ()=>{
   console.log('Server is running on port 8080...');
-})*/
+})
