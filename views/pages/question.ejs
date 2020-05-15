@@ -22,13 +22,13 @@
                 <div class="content"> <%= question.content %></div>
 
 
-                  <form action="http://localhost:8080/question/delete/<%=question.id%>" method="get" class=" ui for"></form>
+                  <form action="https://hadomrat.azurewebsites.net/question/delete/<%=question.id%>" method="get" class=" ui for"></form>
 
                 </form>
               </div>
         <br></p>
-        <a  class="card-link" type="submit" href="http://localhost:8080/question/delete/<%=question.id%>" value="Delete">Delete</a>
-        <a  class="card-link" type="submit" href="http://localhost:8080/question/answer/<%= question.id %>" value="answer" method="get">View answers</a>
+        <a  class="card-link" type="submit" href="https://hadomrat.azurewebsites.net/question/delete/<%=question.id%>" value="Delete">Delete</a>
+        <a  class="card-link" type="submit" href="https://hadomrat.azurewebsites.net/question/answer/<%= question.id %>" value="answer" method="get">View answers</a>
       </div>
       <div class="card-footer text-muted">
         <%= question.createdat %>
@@ -43,7 +43,7 @@
 <div class="container" style="width: 100%;
 justify-content: center;
 align-items: center">
-<form action="http://localhost:8080/question/question" method="post" class=" ui for">
+<form action="https://hadomrat.azurewebsites.net/question/question" method="post" class=" ui for">
   <div class="field">
       <label for="message">Add your question</label>
       <textarea class="form-control" name="message" id="message"  rows="3"></textarea>
