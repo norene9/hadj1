@@ -8,11 +8,7 @@ const port = process.env.PORT || 8080;
 var http = require('http');
 let app=express();
 //------------------------------------------
-function checkUserAuth(req, res, next) {
-  if (req.session.user) return next();
-  return next(new NotAuthorizedError());
-}
-app.get('/app/:id', checkUserAuth, findApp, renderView, sendJSON);
+
 
 
 
