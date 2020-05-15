@@ -155,7 +155,7 @@ const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/plain"});
    
 });
-server.listen(port);
+app.listen(port);
 /*app.listen(port, ()=>{
   console.log('Server is running on port 8080...');
 })*/
