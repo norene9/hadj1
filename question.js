@@ -49,6 +49,7 @@ router.get('/question',(request,response)=>{
       if (error) {
           throw error;
       }
+      response.end(json.stringify(results)
     //  sql = 'SELECT * FROM (SELECT * FROM message right join users ON message.idUserqst=users.idUsers UNION SELECT * FROM message left join users ON message.idUserqst=users.idUsers) as a where a.id=?',
     //  mysqlConnection.query(sql,[request.session.userId], function(error, results2) {
     //      if (error) {
