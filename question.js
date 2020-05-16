@@ -28,6 +28,7 @@ const redirectLogin =(req,res,next)=>{
 //ADD QUESTION (create table message(id INT PRIMARY KEY AUTO_INCREMENT,content VARCHAR(255),createdat datetime);)
 router.post('/question',redirectLogin,(request,response)=>{
   let content = 'INSERT INTO message SET content=?,createdat=?,idUserqst =?';
+    
          let todo = request.body.message;
 
          mysqlConnection.query(content, [todo,new Date(),request.session.userId], (err, results, fields) => {
