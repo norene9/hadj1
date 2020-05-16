@@ -30,7 +30,7 @@ router.post('/question',redirectLogin,(request,response)=>{
   let content = 'INSERT INTO message SET content=?,createdat=?,idUserqst =?';
     
          let todo = request.body.message;
-
+let id =request.session.userId;
          mysqlConnection.query(content, [todo,new Date(),request.session.userId], (err, results, fields) => {
           if (err) {
             return console.error(err.message);
