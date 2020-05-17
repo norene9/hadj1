@@ -1,5 +1,5 @@
 let express=require('express');
-var mysqlConnection=require('./config/db');
+var mysqlConnection=require('./config/config');
 var  flash= require('connect-flash');
 const bodyparser=require('body-parser')
 const session = require('express-session');
@@ -7,6 +7,7 @@ const session = require('express-session');
 let router = express.Router();
 
 //middleware
+router.use('/',require('./config/api'))
 router.use(bodyparser.urlencoded({extended:false}));
 router.use(bodyparser.json());
 router.use(session({
@@ -27,16 +28,16 @@ const redirectLogin =(req,res,next)=>{
 
 //ADD QUESTION (create table message(id INT PRIMARY KEY AUTO_INCREMENT,content VARCHAR(255),createdat datetime);)
 router.post('/question',redirectLogin,(request,response)=>{
-  let content = 'INSERT INTO message SET content=?,createdat=?,idUserqst =?';
-    
+  let content = 'INSERT INTO message SET content=?,createdat=?,idUserqst =?,userNameQst=?';
          let todo = request.body.message;
 
-         mysqlConnection.query(content, [todo,new Date(),request.session.userId], (err, results, fields) => {
+         mysqlConnection.query(content, [todo,new Date(),request.session.userId,request.session.userName], (err, results, fields) => {
           if (err) {
             return console.error(err.message);
           }
 
           console.log('Todo Id:' + results.insertId);
+
          response.redirect('question')
       });
 
@@ -49,16 +50,8 @@ router.get('/question',(request,response)=>{
       if (error) {
           throw error;
       }
-      response.end(json.stringify(results)
-    //  sql = 'SELECT * FROM (SELECT * FROM message right join users ON message.idUserqst=users.idUsers UNION SELECT * FROM message left join users ON message.idUserqst=users.idUsers) as a where a.id=?',
-    //  mysqlConnection.query(sql,[request.session.userId], function(error, results2) {
-    //      if (error) {
-    //          throw error;
-    //      }
-    //      console.log(results2);
-    //
-    // })
-    response.render('pages/question',{question:results})
+    console.log('this is the name ===> ',request.session.userId,results[0].idUserqst );
+    response.render('pages/question',{question:results,userid: request.session.userId})
 
   });})
 
@@ -74,11 +67,20 @@ router.get('/question',(request,response)=>{
 
 });
 });
+router.get('/Adelete/:id', (req, res) => {
+  mysqlConnection.query('DELETE  FROM reply WHERE idr= ?', [req.params.id], (err, rows, fields) => {
+    if (err) {
+      return console.error(err.message);
+    }
+res.redirect('back')
+
+});
+});
 //ADD REPLY (create table reply(idr INT PRIMARY KEY AUTO_INCREMENT,cont VARCHAR(255),qid INT);)
-router.post('/answer/:id',(request,response)=>{
+router.post('/answer/:id',redirectLogin,(request,response)=>{
   let id=request.params.id;
   let cont = request.body.reply;
-mysqlConnection.query('INSERT INTO reply SET cont=?, qid=?', [cont,id], (err, results) => {
+mysqlConnection.query('INSERT INTO reply SET cont=?, qid=?,userNameRes=?', [cont,id,request.session.userName], (err, results) => {
    if (err) {
      return console.error(err.message);
    }
